@@ -8,21 +8,26 @@ function naikAngkot(arrPenumpang) {
             ob.naikDari = arrPenumpang[i][1];
             ob.tujuan = arrPenumpang[i][2];
             ob.bayar = 0 ;
-            for(var j = 0; j < rute.length; j++){
-                if(rute[j] === arrPenumpang[i][1]){
-                    // console.log(arrPenumpang[i][1]);
-                    var naikDari = j;             
+                for(var j = 0; j < rute.length; j++){
+                    for(var n = 0; n < rute.length; n++){
+                        if(rute[j] === arrPenumpang[i][1]){
+                            // console.log('naik dari ==>' +arrPenumpang[i][1]);   
+                            var naikDari = j; 
+                        }
+                        else if(rute[n] === arrPenumpang[i][2]){
+                            // console.log('tujuan ==>' + arrPenumpang[i][2]);
+                            var tujuan = n;
+                            
+                        }
+                    }
+                    
                 }
-            }
-            for(var n = naikDari; n < rute.length; n++){
-                if(rute[n] === arrPenumpang[i][2]);
-                var tujuan = n;
-               
-            }
+                
+                
                 ob.bayar = (tujuan - naikDari) * 2000;
-                // console.log('index B' + naikDari);
-                // console.log('indek F' + tujuan);
-            result.push(ob);   
+                // console.log('index A' + naikDari);
+                // console.log('indek B' + tujuan);
+                result.push(ob);   
         }
         return result;
   }
